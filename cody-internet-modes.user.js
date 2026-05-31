@@ -28,14 +28,14 @@
       wisdom: "Stand above the noise."
     },
     {
-      name: "CAMPFIRE",
-      icon: "🔥",
-      bg: "#21130d",
-      text: "#ffe6c0",
-      link: "#ffb86b",
-      button: "#8a3f1d",
-      wisdom: "Pull up a chair."
-    },
+  name: "CAMPFIRE",
+  icon: "🔥",
+  bg: "#1b120c",
+  text: "#f8ead1",
+  link: "#ffbe73",
+  button: "#7a3c1f",
+  wisdom: "🔥 Pull up a chair."
+}
     {
       name: "FLIGHT DECK",
       icon: "✈️",
@@ -97,8 +97,12 @@
     document.body.style.background = mode.bg;
     document.body.style.color = mode.text;
     document.body.style.lineHeight = "1.75";
+    document.body.style.maxWidth = "1400px";
+    document.body.style.margin = "0 auto";
 
-    document.querySelectorAll("p, li, span, div, article, main, section").forEach(el => {
+    document.querySelectorAll(
+  "p, li, article, main, section, blockquote"
+).forEach(el => {
       el.style.color = mode.text;
       el.style.lineHeight = "1.75";
     });
@@ -111,7 +115,9 @@
     button.style.background = mode.button;
     button.style.color = mode.name === "PANCAKES" ? "#20140d" : "#fff3df";
 
-    showWisdom(mode.wisdom);
+    if (Math.random() < 0.25) {
+  showWisdom(mode.wisdom);
+}
   }
 
   button.onclick = function () {
