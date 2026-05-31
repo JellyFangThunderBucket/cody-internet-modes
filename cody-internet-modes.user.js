@@ -47,7 +47,9 @@
     }
   ];
 
-  let currentMode = -1;
+  let currentMode = parseInt(
+  localStorage.getItem("codyInternetMode") || "-1"
+);
 
   const button = document.createElement("button");
   button.textContent = "🥞 PANCAKES";
@@ -93,7 +95,10 @@
     }, 1800);
   }
 
-  function applyMode(mode) {
+  localStorage.setItem(
+  "codyInternetMode",
+  modes.indexOf(mode)
+);
     document.body.style.background = mode.bg;
     document.body.style.color = mode.text;
     document.body.style.lineHeight = "1.75";
@@ -126,4 +131,12 @@
   };
 
   document.body.appendChild(button);
+
+if (
+  currentMode >= 0 &&
+  currentMode < modes.length
+) {
+  applyMode(modes[currentMode]);
+}
+
 })();
